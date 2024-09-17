@@ -2,22 +2,26 @@ import { FC, useState } from "react";
 import CircularButton from "./Buttons/CircularButton";
 import { TiSocialFacebook } from "react-icons/ti";
 import ATags from "./Buttons/ATags";
+import logo from "../assets/images/logo.png";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openNav = () => setIsOpen(true);
   const closeNav = () => setIsOpen(false);
+  const isLocationTrue = useLocation().pathname;
+
   return (
     <>
-      <div className="navbar bg-bgBrown text-white">
+      <div className="navbar bg-[#000] text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
-                fill="none"
+                fill="#000"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path
@@ -30,7 +34,7 @@ const Navbar: FC = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+              className="menu menu-sm dropdown-content bg-[#000] rounded-box z-[1] mt-3 w-52 p-2 shadow">
               <li>
                 <a>Home</a>
               </li>
@@ -50,28 +54,56 @@ const Navbar: FC = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">
+            <img src={logo} alt="logo" className="w-auto h-7" />
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 bg-bgBrown">
+          <ul className="flex gap-5 px-1 bg-[#000]">
             <li>
-              <a>Home</a>
+              <Link
+                to={"/"}
+                className={`hover:text-yellow-300 text-base ${
+                  isLocationTrue === "/" ? "text-yellow-300" : ""
+                } `}>
+                Home
+              </Link>
             </li>
             <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
+              <Link
+                to={"/about"}
+                className={`hover:text-yellow-300 text-base ${
+                  isLocationTrue === "/about" ? "text-yellow-300" : ""
+                } `}>
+                About
+              </Link>
             </li>
             <li>
-              <a>About</a>
+              <Link
+                to={"/portfolio"}
+                className={`hover:text-yellow-300 text-base ${
+                  isLocationTrue === "/portfolio" ? "text-yellow-300" : ""
+                } `}>
+                Portfolio
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"/blog"}
+                className={`hover:text-yellow-300 text-base ${
+                  isLocationTrue === "/blog" ? "text-yellow-300" : ""
+                } `}>
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"/contact"}
+                className={`hover:text-yellow-300 text-base ${
+                  isLocationTrue === "/contact" ? "text-yellow-300" : ""
+                } `}>
+                Contact
+              </Link>
             </li>
           </ul>
         </div>
@@ -84,11 +116,10 @@ const Navbar: FC = () => {
 
       <div
         id="mySidenav"
-        className="bg-bgBrown"
         style={{
           width: isOpen ? "400px" : "0",
           transition: "0.5s",
-          height: "100%", // Ensure it takes up the full height
+          height: "100%",
           position: "fixed",
           top: "0",
           left: "0",
@@ -101,10 +132,10 @@ const Navbar: FC = () => {
           className="closebtn"
           onClick={closeNav}
           style={{
-            float: 'inline-end',
+            float: "inline-end",
             color: "white",
             padding: "8px 8px 8px 20px",
-            display: "block"
+            display: "block",
           }}>
           &times;
         </a>
