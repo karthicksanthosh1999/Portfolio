@@ -2,6 +2,7 @@ import { FC } from "react";
 import Pagination from "../Components/Pagination";
 import ATags from "../Components/Buttons/ATags";
 import CircularButton from "../Components/Buttons/CircularButton";
+import { faFacebook, faInstagram, faLinkedin, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const Contact: FC = () => {
   return (
@@ -9,7 +10,7 @@ const Contact: FC = () => {
       <div className="bg-[#000] py-10 px-5">
         <Pagination maintitle="Contact" title1="Home" title2="Contact" />
         {/* CONTACT FORM  */}
-        <div className="grid md:grid-cols-2 grid-cols-1">
+        <div className="grid md:grid-cols-2 grid-cols-1 justify-center">
           <div>
             <p className="text-[#cbcbcb] font-semibold py-5">Get In Touch</p>
             <h1 className="text-white text-5xl">Let’s Talk For your</h1>
@@ -30,10 +31,10 @@ const Contact: FC = () => {
               Follow Me:
             </h3>
             <div className="flex gap-3 mt-5">
-              <CircularButton icon={"F"} />
-              <CircularButton icon={"F"} />
-              <CircularButton icon={"F"} />
-              <CircularButton icon={"F"} />
+              <CircularButton to="https://www.facebook.com/joshap.karthick/" icon={faFacebook} cls="border border-yellow-300" />
+              <CircularButton to="#" icon={faInstagram} cls="border border-yellow-300" />
+              <CircularButton to="#" icon={faWhatsapp} cls="border border-yellow-300" />
+              <CircularButton to="https://linkedin.com/in/karthick-s-278678241" icon={faLinkedin} cls="border border-yellow-300" />
             </div>
           </div>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
@@ -117,11 +118,11 @@ const Contact: FC = () => {
               <textarea
                 placeholder="Message"
                 className="textarea textarea-bordered textarea-lg w-full max-w-xs bg-bgBrown"></textarea>
-                  <div className="label">
-                  <span className="label-text-alt text-white">
-                    Message is required
-                  </span>
-                </div>
+              <div className="label">
+                <span className="label-text-alt text-white">
+                  Message is required
+                </span>
+              </div>
             </div>
           </div>
         </div>

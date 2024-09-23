@@ -1,15 +1,16 @@
-import {FC} from "react";
+import { FC } from "react";
 
 interface PagiantionProps {
-    title1 : string;
-    title2 : string;
-    maintitle : string;
+  title1: string;
+  title2: string;
+  maintitle: string;
 }
 
-const Pagination:FC<PagiantionProps> = ({title1,title2, maintitle}) => {
+const Pagination: FC<PagiantionProps> = ({ title1, title2, maintitle }) => {
   return (
     <>
-      <div className="bg-bgBrown py-36">
+      {/* <div className="bg-bgBrown py-36"> */}
+      <div className="py-36">
         <div>
           <h1 className="text-5xl font-semibold text-white text-center">
             {maintitle}
