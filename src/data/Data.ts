@@ -3,8 +3,24 @@ import blog1 from '../assets/images/blog/projectTracker.jpg'
 import blog2 from '../assets/images/blog/aws.jpg'
 import blog3 from '../assets/images/blog/mobileAppDevelopment.jpg'
 import project1 from '../assets/images/projects/project1.jpg'
+import achivement1 from '../assets/images/achivements/achivement_1.png'
+import achivement2 from '../assets/images/achivements/achivement_2.png'
+
 import { IFaq } from "../Screens/About"
 import { IProject } from "../Screens/Project"
+
+export interface IAchivement {
+    _id: string
+    title: string,
+    category: string,
+    pic: string,
+    link: string,
+    subTitle: string,
+    content: string,
+    client: string,
+    location: string,
+    published: string,
+}
 
 export const projects: IProject[] = [
     {
@@ -127,4 +143,31 @@ export const faqs: IFaq[] = [
         question: "How do you stay updated with industry trends?",
         answer: "I regularly follow tech blogs, participate in coding challenges, and stay active in developer communities. I also enroll in online courses to keep my skills up to date with the latest technologies."
     },
-] 
+]
+
+export const achivement: IAchivement[] = [
+    {
+        _id: "0",
+        title: "Introduction to Front-End Development",
+        subTitle: "Frontend Development - Meta",
+        category: "Frontend Development",
+        pic: achivement1,
+        link: "https://www.coursera.org/learn/introduction-to-front-end-development?specialization=meta-front-end-developer",
+        content: "Create a responsive website using HTML to structure content, CSS to handle visual style, and JavaScript to develop interactive experiences.",
+        client: "Meta",
+        location: "Madurai",
+        published: "05-Oct-2024"
+    },
+    {
+        _id: "1",
+        title: "MERN Stack",
+        subTitle: "Mern Stack Certificate - Livewaire",
+        category: "Full Stack Development",
+        pic: achivement2,
+        link: "-",
+        content: "Lern the MERN stack tools",
+        client: "Livewaire",
+        location: "Madurai",
+        published: "05-Apr-2023"
+    },
+]

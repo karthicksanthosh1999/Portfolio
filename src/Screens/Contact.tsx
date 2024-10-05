@@ -1,10 +1,96 @@
-import { FC } from "react";
+import { ChangeEventHandler, FC, FocusEventHandler, FormEventHandler, useState } from "react";
 import Pagination from "../Components/Pagination";
 import ATags from "../Components/Buttons/ATags";
 import CircularButton from "../Components/Buttons/CircularButton";
 import { faFacebook, faInstagram, faLinkedin, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+// import emailjs from 'emailjs-com';
+
+interface IContact {
+  fullName: string,
+  email: string,
+  mobile: string,
+  subject: string,
+  message: string,
+}
 
 const Contact: FC = () => {
+
+  const [errors, setErrors] = useState<Partial<IContact>>({})
+  const [contacts, setContacts] = useState<IContact>({
+    email: "",
+    fullName: "",
+    message: "",
+    mobile: "",
+    subject: "",
+  })
+
+
+  const handleValidation = () => {
+    const newErrors: Partial<IContact> = {};
+    if (!contacts.email) {
+      newErrors.email = "Email is required!"
+    }
+    if (!contacts.fullName) {
+      newErrors.fullName = "Full Name is required!"
+    }
+    if (!contacts.mobile) {
+      newErrors.mobile = "Mobile is required!"
+    }
+    if (!contacts.subject) {
+      newErrors.subject = "Subject is required!"
+    }
+    if (!contacts.message) {
+      newErrors.message = "Message is required!"
+    }
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0;
+  }
+
+  const handleChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (event) => {
+    const { name, value } = event.target;
+    setContacts((preV) => ({
+      ...preV, [name]: value
+    }))
+  }
+
+  const handleFocuse: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> = (event) => {
+    const { name } = event.target;
+    setErrors((preV) => ({
+      ...preV, [name]: ""
+    }))
+  }
+
+  const handleResetForm = () => {
+    setContacts({
+      email: "",
+      fullName: "",
+      message: "",
+      mobile: "",
+      subject: "",
+    })
+  }
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
+    event.preventDefault();
+    if (handleValidation()) {
+      console.log(contacts)
+      handleResetForm()
+      // Replace with your EmailJS service, template, and user IDs
+      // const serviceID = 'handleResetForm';
+      // const templateID = 'template_mr9ityf';
+      // const userID = 'J8bIfik-Gi_eXY-trUzP3';
+
+      // await emailjs.send(serviceID, templateID, contacts, userID)
+      //   .then((response) => {
+      //     console.log('Email sent successfully!', response);
+      //     handleResetForm()
+      //   })
+      //   .catch((err) => {
+      //     console.error('Failed to send email:', err);
+      //   });
+    }
+  }
+
   return (
     <>
       <div className="bg-[#000] py-10 px-5">
@@ -37,96 +123,129 @@ const Contact: FC = () => {
               <CircularButton to="https://linkedin.com/in/karthick-s-278678241" icon={faLinkedin} cls="border border-yellow-300" />
             </div>
           </div>
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
-            <div>
-              <label className="form-control w-full max-w-xs">
-                <div className="label">
-                  <span className="label-text text-white">
-                    Full Name <span className="text-yellow-300">*</span>
-                  </span>
+          {/* Form Section */}
+          <form onSubmit={handleSubmit} noValidate className="md:mt-0 sm:mt-5">
+            <div className="grid grid-cols-1 gap-5">
+              <div className="grid md:grid-cols-2 grid-cols-1 gap-x-3">
+                <div>
+                  <label className="form-control w-full max-w-xs">
+                    <div className="label">
+                      <span className="label-text text-white">
+                        Full Name <span className="text-yellow-300">*</span>
+                      </span>
+                    </div>
+                    <input
+                      onChange={handleChange}
+                      onFocus={handleFocuse}
+                      value={contacts.fullName}
+                      name="fullName"
+                      type="text"
+                      placeholder="Full Name"
+                      className="input input-bordered w-full max-w-xs bg-bgPrimary text-white"
+                    />
+                    <div className="label">
+                      {errors.fullName && <span className="label-text-alt text-white">{errors.fullName}</span>}
+                    </div>
+                  </label>
                 </div>
-                <input
-                  type="text"
-                  placeholder="Full Name"
-                  className="input input-bordered w-full max-w-xs bg-bgPrimary text-white"
-                />
-                <div className="label">
-                  <span className="label-text-alt text-white">
-                    Full name is required
-                  </span>
+                <div>
+                  <label className="form-control w-full max-w-xs">
+                    <div className="label">
+                      <span className="label-text text-white">
+                        Email <span className="text-yellow-300">*</span>
+                      </span>
+                    </div>
+                    <input
+                      name="email"
+                      type="email"
+                      placeholder="Email"
+                      onChange={handleChange}
+                      onFocus={handleFocuse}
+                      value={contacts.email}
+                      className="input input-bordered w-full max-w-xs bg-bgPrimary text-white"
+                    />
+                    <div className="label">
+                      {errors.email && <span className="label-text-alt text-white">{errors.email}</span>}
+                    </div>
+                  </label>
                 </div>
-              </label>
-            </div>
-            <div>
-              <label className="form-control w-full max-w-xs">
-                <div className="label">
-                  <span className="label-text text-white">
-                    Email <span className="text-yellow-300">*</span>
-                  </span>
+              </div>
+              <div className="grid md:grid-cols-2 grid-cols-1 gap-x-3">
+                <div>
+                  <label className="form-control w-full max-w-xs">
+                    <div className="label">
+                      <span className="label-text text-white">
+                        Mobile <span className="text-yellow-300">*</span>
+                      </span>
+                    </div>
+                    <input
+                      onChange={handleChange}
+                      onFocus={handleFocuse}
+                      value={contacts.mobile}
+                      name="mobile"
+                      type="text"
+                      placeholder="Mobile"
+                      className="input input-bordered w-full max-w-xs bg-bgPrimary text-white"
+                    />
+                    <div className="label">
+                      <span className="label-text-alt text-white">
+                        {errors.mobile && <span className="label-text-alt text-white">{errors.mobile}</span>}
+                      </span>
+                    </div>
+                  </label>
                 </div>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="input input-bordered w-full max-w-xs bg-bgPrimary text-white"
-                />
-                <div className="label">
-                  <span className="label-text-alt text-white">
-                    Email is required
-                  </span>
+                <div>
+                  <label className="form-control w-full max-w-xs">
+                    <div className="label">
+                      <span className="label-text text-white">
+                        Subject <span className="text-yellow-300">*</span>
+                      </span>
+                    </div>
+                    <input
+                      onChange={handleChange}
+                      onFocus={handleFocuse}
+                      value={contacts.subject}
+                      name="subject"
+                      type="email"
+                      placeholder="Subject"
+                      className="input input-bordered w-full max-w-xs bg-bgPrimary text-white"
+                    />
+                    <div className="label">
+                      <span className="label-text-alt text-white">
+                        {errors.subject && <span className="label-text-alt text-white">{errors.subject}</span>}
+                      </span>
+                    </div>
+                  </label>
                 </div>
-              </label>
-            </div>
-            <div>
-              <label className="form-control w-full max-w-xs">
-                <div className="label">
-                  <span className="label-text text-white">
-                    Mobile <span className="text-yellow-300">*</span>
-                  </span>
+              </div>
+              <div className="grid md:grid-cols-2 grid-cols-1 gap-x-3">
+                <div className="col-span-2">
+                  <div className="label">
+                    <span className="label-text text-white">
+                      Message <span className="text-yellow-300">*</span>
+                    </span>
+                  </div>
+                  <textarea
+                    onChange={handleChange}
+                    onFocus={handleFocuse}
+                    value={contacts.message}
+                    name="message"
+                    placeholder="Message"
+                    className="textarea textarea-bordered textarea-lg w-full max-w-2xl bg-bgBrown"></textarea>
+                  <div className="label">
+                    <span className="label-text-alt text-white">
+                      {errors.message && <span className="label-text-alt text-white">{errors.message}</span>}
+                    </span>
+                  </div>
                 </div>
-                <input
-                  type="text"
-                  placeholder="Mobile"
-                  className="input input-bordered w-full max-w-xs bg-bgPrimary text-white"
-                />
-                <div className="label">
-                  <span className="label-text-alt text-white">
-                    Mobile number is required
-                  </span>
-                </div>
-              </label>
-            </div>
-            <div>
-              <label className="form-control w-full max-w-xs">
-                <div className="label">
-                  <span className="label-text text-white">
-                    Subject <span className="text-yellow-300">*</span>
-                  </span>
-                </div>
-                <input
-                  type="email"
-                  placeholder="Subject"
-                  className="input input-bordered w-full max-w-xs bg-bgPrimary text-white"
-                />
-                <div className="label">
-                  <span className="label-text-alt text-white">
-                    Subject is required
-                  </span>
-                </div>
-              </label>
-            </div>
-            <div>
-              <textarea
-                placeholder="Message"
-                className="textarea textarea-bordered textarea-lg w-full max-w-xs bg-bgBrown"></textarea>
-              <div className="label">
-                <span className="label-text-alt text-white">
-                  Message is required
-                </span>
+              </div>
+              <div>
+                <button type="submit" className="px-5 py-3 hover:bg-[#000] bg-bgYellow text-black hover:text-yellow-300 transition duration-300 rounded-lg hover:ring-2 hover:ring-yellow-300 text-center">Submit</button>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </form>
+        </div >
+      </div >
     </>
   );
 };

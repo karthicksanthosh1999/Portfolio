@@ -23,7 +23,7 @@ const Blog: FC = () => {
     }, [id])
     return (
         <>
-            <div className=''>
+            <div className='bg-bgBrown'>
                 <div className='container mx-auto'>
                     <div className="">
                         <Pagination maintitle='Latest News' title1='Home' title2='Blog' />
@@ -52,8 +52,8 @@ const Blog: FC = () => {
                                 {
                                     blog && blog.category.map((item, i) => (
                                         <ul className='mt-5 flex gap-3' key={i}>
-                                            <li className='text-lg font-semibold tex-[#cbcbcb] hover:text-yellow-300 inline-flex gap-2 items-center transition duration-300 hover:translate-x-5 cursor-pointer'>
-                                                <FontAwesomeIcon icon={faArrowRight} className='text-lg' />
+                                            <li className='text-lg font-semibold tex-[#cbcbcb] text-[#cbcbcb] hover:text-yellow-300 inline-flex gap-2 items-center transition duration-300 hover:translate-x-5 cursor-pointer'>
+                                                <FontAwesomeIcon icon={faArrowRight} className='text-lg text-white' />
                                                 {item}</li>
                                         </ul>
                                     ))

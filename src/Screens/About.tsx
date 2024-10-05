@@ -8,35 +8,46 @@ import { faArrowUpRightFromSquare, faCheck, faChevronRight } from "@fortawesome/
 import OuterButton from "../Components/Buttons/OuterButton";
 import PopularCard from "../Components/Cards/PopularCard";
 import { faqs } from "../data/Data";
+import { motion } from 'framer-motion';
 
 export interface IFaq {
   question: string,
   answer: string
 }
+const development = ["Web Development", "Mobile App Development", "Product Design", "DevOps"]
 
 const About: FC = () => {
   return (
     <>
       <div className="bg-bgPrimary">
         <Pagination maintitle="About Me" title1="Home" title2="About" />
-        <img src={aboutPng} alt="aboutpng" className="w-auto h-[100%] p-5" />
+        <motion.img
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 1, ease: "easeInOut" }}
+          src={aboutPng} alt="aboutpng" className="w-full h-auto p-5" />
         {/* About Me */}
         <div className=" grid md:grid-cols-4 grid-cols-1 p-5 justify-center">
           <div className="col-span-2 flex flex-col gap-5 space-y-6">
             <p className="text-base text-[#cbcbcb] text-left">About Me</p>
-            <h3 className="text-4xl font-semibold text-white">Professional Problem Solutions For Digital Products</h3>
+            <h3 className="text-4xl font-semibold text-white">Professional <span className="text-yellow-300">Problem Solutions</span> For Digital Products</h3>
             <h5 className="text-base text-[#cbcbcb]">At vero eos et accusamus etodio dignissimos ducimus praesentium voluptatum corrupti quos dolores quas molestias excepturi sint occaecati cupiditate provident qui officia deserunt mollitia animi, id est laborum et dolorum</h5>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
-              <p className="text-white text-xl font-semibold"><FontAwesomeIcon icon={faCheck} className="text-yellow-300 pr-2" fontSize={20} />Branding & Design</p>
-              <p className="text-white text-xl font-semibold"><FontAwesomeIcon icon={faCheck} className="text-yellow-300 pr-2" fontSize={20} />
-                Web Development</p>
-              <p className="text-white text-xl font-semibold"><FontAwesomeIcon icon={faCheck} className="text-yellow-300 pr-2" fontSize={20} />
-                Digital Marketing</p>
-              <p className="text-white text-xl font-semibold"><FontAwesomeIcon icon={faCheck} className="text-yellow-300 pr-2" fontSize={20} />
-                Product Design</p>
+              {
+                development && development.map((item, i) => (
+                  <motion.p
+                    initial={{ opacity: 0, y: i % 2 === 0 ? -100 : 100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 1, ease: "easeInOut" }}
+                    className="text-white text-xl font-semibold">
+                    <FontAwesomeIcon icon={faCheck} className="text-yellow-300 pr-2" fontSize={20} />{item}</motion.p>
+                ))
+              }
             </div>
             <div className="py-5">
-              <OuterButton title="Learn More" icon={faChevronRight} to="#" />
+              <OuterButton title="Contact Me" icon={faChevronRight} to="#" />
             </div>
           </div>
           <div className="col-span-2 relative">
@@ -48,9 +59,15 @@ const About: FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div >
       {/* popular Services */}
-      <div className="pt-14 p-5 bg-bgBrown">
+      < motion.div
+        initial={{ opacity: 0, y: 100 }
+        }
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 1, ease: "easeInOut" }}
+        className="pt-14 p-5 bg-bgBrown" >
         <p className="text-base text-center text-[#ababab]">
           Popular Services
         </p>
@@ -68,13 +85,13 @@ const About: FC = () => {
           <PopularCard title="Programming Language" subTitle="JavaScript, TypeScript and Python" no="05" icon={faArrowUpRightFromSquare} />
           <PopularCard title="Testing Experience" subTitle="Develop a application without bugs" no="06" icon={faArrowUpRightFromSquare} />
         </div>
-      </div>
+      </ motion.div>
       {/* FAQ */}
-      <div className="text-center tracking-wider bg-bgPrimary pt-10">
+      < div className="text-center tracking-wider bg-bgPrimary pt-10" >
         <p className="text-base text-[#cbcbcb]">FAQ'S</p>
         <h1 className="text-4xl font-semibold text-[#fff]">This FAQ section showcases</h1>
         <h1 className="text-4xl font-semibold text-[#fff]">My <span className="text-yellow-300">Technical</span> expertise</h1>
-      </div>
+      </div >
       <div className="grid md:grid-cols-2 grid-cols-1 px-5 bg-bgPrimary">
         <div className="space-y-4 my-5 flex flex-col justify-center">
           {
@@ -95,7 +112,7 @@ const About: FC = () => {
                   </svg>
                 </summary>
 
-                <p className="p-4 leading-relaxed ttext-white">
+                <p className="p-4 leading-relaxed text-white">
                   {item.answer}
                 </p>
               </details>

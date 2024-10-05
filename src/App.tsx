@@ -10,6 +10,7 @@ import Portfolio from "./Screens/Portfolio";
 import Project from "./Screens/Project";
 import Blog from "./Screens/Blog";
 import { useEffect } from "react";
+import Achivement from "./Screens/Achivement";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/about" Component={About} />
         <Route path="/contact" Component={Contact} />
         <Route path="/portfolio" Component={Portfolio} />
+        <Route path="/achivement/:id" Component={Achivement} />
         <Route path="/project/:id" Component={Project} />
         <Route path="/blog/:id" Component={Blog} />
       </Routes>
