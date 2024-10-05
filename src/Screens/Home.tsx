@@ -9,7 +9,7 @@ import redux from '../assets/images/home/redux.png'
 import nodejs from '../assets/images/home/nodejs.png'
 import OuterButton from '../Components/Buttons/OuterButton';
 import logo from '../assets/images/home/logoPng.png';
-import resume from '../assets/images/Karthick-MERN.pdf';
+import resume from '../assets/images/karthick_mern.pdf';
 import CircularButton from '../Components/Buttons/CircularButton';
 import { faChevronRight, faShare } from '@fortawesome/free-solid-svg-icons';
 import { blogs, projects } from '../data/Data';
@@ -53,7 +53,7 @@ const Home: FC = () => {
     },
   ]
 
-  const text = " Full stack developer with 1.2 Year of experience in working with HTML5, CSS3, JavaScript, TypeScript and its modernES6 + syntax and features to deliver exceptional client experience.".split(" ");
+  const text = " Full stack developer with 1.3 Year of experience in working with HTML5, CSS3, JavaScript, TypeScript and its modernES6 + syntax and features to deliver exceptional client experience.".split(" ");
 
   return (
     <>
