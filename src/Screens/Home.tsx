@@ -9,7 +9,7 @@ import redux from '../assets/images/home/redux.png'
 import nodejs from '../assets/images/home/nodejs.png'
 import OuterButton from '../Components/Buttons/OuterButton';
 import logo from '../assets/images/home/logoPng.png';
-import resume from '../assets/images/karthick_mern.pdf';
+import resume from '../assets/karthick_mern.pdf';
 import CircularButton from '../Components/Buttons/CircularButton';
 import { faChevronRight, faShare } from '@fortawesome/free-solid-svg-icons';
 import { blogs, projects } from '../data/Data';
@@ -89,7 +89,7 @@ const Home: FC = () => {
                 transition={{ duration: 1 }}
                 className="text-3xl text-yellow-300 font-bold sm:text-4xl">Software Engineering</motion.h2>
 
-              <div className="">
+              <div className="text-[#cbcbcb]">
                 {text.map((el, i) => (
                   <motion.span className=''
                     initial={{ opacity: 0 }}
