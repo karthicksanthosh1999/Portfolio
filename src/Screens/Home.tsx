@@ -53,7 +53,7 @@ const Home: FC = () => {
     },
   ]
 
-  const text = " Full stack developer with 1.3 Year of experience in working with HTML5, CSS3, JavaScript, TypeScript and its modernES6 + syntax and features to deliver exceptional client experience.".split(" ");
+  const text = " Full stack developer with 1.4 Year of experience in working with HTML5, CSS3, JavaScript, TypeScript and its modernES6 + syntax and features to deliver exceptional client experience.".split(" ");
 
   return (
     <>
@@ -163,7 +163,7 @@ const Home: FC = () => {
               <div className="flex gap-5 flex-wrap col-span-2 p-5">
                 <CircularButton to='#' icon={faChevronRight} cls="border border-yellow-300" />
                 <div className=''>
-                  <p className='text-[#cbcbcb] text-base'>2023-2024</p>
+                  <p className='text-[#cbcbcb] text-base'>2023-Present</p>
                   <h5 className='text-2xl text-white whitespace-pre-wrap'>Software Development Engineer</h5>
                   <p className='text-[#6d6859] text-base'>Wizinoa</p>
                 </div>

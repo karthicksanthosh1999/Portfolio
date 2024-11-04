@@ -1,10 +1,11 @@
 import { IBlogs } from "../Screens/Blog"
 import blog1 from '../assets/images/blog/projectTracker.jpg'
 import blog2 from '../assets/images/blog/aws.jpg'
-import blog3 from '../assets/images/blog/mobileAppDevelopment.jpg'
+import blog3 from '../assets/images/blog/leetcode.png'
 import project1 from '../assets/images/projects/project1.jpg'
 import achivement1 from '../assets/images/achivements/achivement_1.png'
 import achivement2 from '../assets/images/achivements/achivement_2.png'
+import achivement3 from '../assets/images/achivements/achivement_3.png'
 
 import { IFaq } from "../Screens/About"
 import { IProject } from "../Screens/Project"
@@ -97,29 +98,29 @@ export const blogs: IBlogs[] = [
     {
         _id: "2",
         pic: blog1,
-        title: "Project Tracker",
+        title: "CRM Application",
         date: "September 13, 2024",
-        subTitle: "Project Tracker",
-        description: "This is my own project, This is availabe in Mobile app alos, Through this applicaiton to tracker our rotine life tacks, How much of time take a task, We can add the team mates also, We can generate the report.",
+        subTitle: "Home Applainance CRM Application",
+        description: "This is my own project",
         category: [
-            "Task",
-            "Report",
-            "Activity",
+            "CRM",
+            "Home Applaiance",
+            "MERN Stack",
         ],
     },
     {
         _id: "3",
         pic: blog3,
-        title: "React Native",
-        date: "September 13, 2024",
-        subTitle: "App Development",
-        description: "Now am learning the mobile app development, I can develop the Web Applicaiton as well as same project in Mobile Application",
+        title: "Leetcode",
+        date: "October 01, 2024",
+        subTitle: "Practice the coding challenges",
+        description: "Using python languaage to prepare the coding challenge, oops concept and DSA",
         category: [
-            "Android",
-            "IOS",
-            "Cross Platform",
+            "DSA",
+            "Leetcode",
+            "OOPs",
         ],
-    },
+    }
 ]
 
 export const faqs: IFaq[] = [
@@ -160,6 +161,18 @@ export const achivement: IAchivement[] = [
     },
     {
         _id: "1",
+        title: "Basic React Development",
+        subTitle: "Frontend Development - Meta",
+        category: "Frontend Development",
+        pic: achivement3,
+        link: "https://coursera.org/share/372ea1f73a033e196651cc3164c00799",
+        content: "Create a dynamic and intractive responsive website useing ReactJS ",
+        client: "Meta",
+        location: "Madurai",
+        published: "30-Oct-2024"
+    },
+    {
+        _id: "2",
         title: "MERN Stack",
         subTitle: "Mern Stack Certificate - Livewaire",
         category: "Full Stack Development",

@@ -78,10 +78,10 @@ const About: FC = () => {
           Business Development
         </h1>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5 mt-10">
-          <PopularCard title="Web Development" subTitle="MERN Stack Application" no="01" icon={faArrowUpRightFromSquare} />
-          <PopularCard title="React Navite" subTitle="Mobile App Development" no="02" icon={faArrowUpRightFromSquare} />
-          <PopularCard title="Aws" subTitle="EC2, S3, IAM" no="03" icon={faArrowUpRightFromSquare} />
-          <PopularCard title="Ubuntu" subTitle="Ubuntu OS with Apache server" no="04" icon={faArrowUpRightFromSquare} />
+          <PopularCard title="Web App Development" subTitle="MERN Stack Application" no="01" icon={faArrowUpRightFromSquare} />
+          <PopularCard title="JEST" subTitle="Unit Testing Framework" no="02" icon={faArrowUpRightFromSquare} />
+          <PopularCard title="AWS" subTitle="EC2, S3, IAM" no="03" icon={faArrowUpRightFromSquare} />
+          <PopularCard title="Python" subTitle="Python for learning OOPS and DSA concept" no="04" icon={faArrowUpRightFromSquare} />
           <PopularCard title="Programming Language" subTitle="JavaScript, TypeScript and Python" no="05" icon={faArrowUpRightFromSquare} />
           <PopularCard title="Testing Experience" subTitle="Develop a application without bugs" no="06" icon={faArrowUpRightFromSquare} />
         </div>
